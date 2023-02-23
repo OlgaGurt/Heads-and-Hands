@@ -81,6 +81,32 @@ class Game {
         self.defender = defender
     }
     
+    // Example for menu
+    func startGame() {
+        print("""
+            What are you want to do?
+            1 - get attack!
+            2 - swap attacker!
+            0 - Do you want go away?
+            """)
+        
+        while true {
+            let choice = readLine()
+            switch choice {
+            case "1":
+                getAttack()
+            case "2":
+                swapAttacker()
+            case "0":
+                print("See you later, good bye!")
+                return
+            default:
+                print("Error, try again")
+            }
+        }
+    }
+
+    
     private func getModificator() -> Int {
         if ((self.attacker.attack - self.defender.protection) + 1) < 1 {
             return 1
@@ -140,8 +166,9 @@ class Game {
 let player = Player(name: "Olga Gurtueva")
 let monster = Monster()
 let game = Game(attacker: player, defender: monster)
+//game.startGame()
 
-//Game check
+// Game check
 var flag: Bool = false
 while player.health > 0 {
     if monster.health < 1 {
